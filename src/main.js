@@ -69,7 +69,7 @@ function updateDom() {
     }
   });
   root.classList.add(`bg-${color.toLocaleLowerCase()}`);
-  image.src = `/src/Assets/${color.toLocaleLowerCase()}.png`;
+  image.src = `./${color.toLocaleLowerCase()}.png`;
   placeDesc.innerHTML = state.place;
   mainText.innerHTML = state.weather.weather[0].main;
   mainTemp.innerHTML = String(Math.ceil(state.weather.main.feels_like)) + "°";
