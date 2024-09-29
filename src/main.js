@@ -72,10 +72,10 @@ function updateDom() {
   image.src = `./${color.toLocaleLowerCase()}.png`;
   placeDesc.innerHTML = state.place;
   mainText.innerHTML = state.weather.weather[0].main;
-  mainTemp.innerHTML = String(Math.ceil(state.weather.main.feels_like)) + "°";
-  minTemp.innerHTML = String(Math.ceil(state.weather.main.temp_min)) + "°";
-  maxTemp.innerHTML = String(Math.ceil(state.weather.main.temp_max)) + "°";
-  avgTemp.innerHTML = String(Math.ceil(state.weather.main.temp)) + "°";
+  mainTemp.innerHTML = String(Math.ceil(state.weather.main.feels_like)) + "° C";
+  minTemp.innerHTML = String(Math.ceil(state.weather.main.temp_min)) + "° C";
+  maxTemp.innerHTML = String(Math.ceil(state.weather.main.temp_max)) + "° C";
+  avgTemp.innerHTML = String(Math.ceil(state.weather.main.temp)) + "° C";
   sunrise.innerHTML = new Date(
     state.weather.sys.sunrise * 1000
   ).toLocaleTimeString();
