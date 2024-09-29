@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/output.css" />
+    <title>Weather App</title>
+  </head>
+  <body>
+    <div
+      class="max-w-[2340px] mx-auto h-screen bg-slate-300"
+      id="root"
+      data-theme="light"
+    >
+      <!-- nav -->
+      <div class="navbar bg-glass">
+        <div class="md:flex flex-1 hidden">
+          <a class="btn btn-ghost text-xl">WEATHER APP</a>
+        </div>
+        <div class="flex-none gap-2">
+          <form class="flex flex-row" id="form">
+            <input
+              type="text"
+              id="input"
+              placeholder="Location"
+              class="input input-bordered input-primary mx-1 bg-transparent placeholder:text-black"
+              required
+            />
+            <button class="btn btn-circle bg-transparent" id="search">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+      <!-- nav end -->
+      <!-- main content -->
+      <div
+        class="w-[90%] h-[85%] mx-auto mt-2 rounded-lg flex flex-col md:flex-row"
+      >
+        <div class="flex-1 flex md:flex-col flex-row bg-glass rounded-md">
+          <div class="flex-1 flex justify-center items-center">
+            <img
+              src="./src/Assets/weather.webp"
+              class="size-[8rem] md:size-[15rem] object-cover"
+              id="image"
+            />
+          </div>
+          <!-- info data section -->
+          <div class="flex-1 flex flex-col justify-evenly items-center">
+            <div class="w-full flex flex-col items-center">
+              <p class="text-2xl font-semibold" id="mainText">--</p>
+              <p class="text-xl font-bold" id="mainTemp">--</p>
+            </div>
+            <p class="text-sm md:text-lg">
+              MIN<span class="hidden md:inline-flex">IMUM</span> TEMP
+              <span class="font-semibold font-serif" id="minTemp">--</span>
+            </p>
+            <p class="text-sm md:text-lg">
+              MAX<span class="hidden md:inline-flex">IMUM</span> TEMP
+              <span class="font-semibold font-serif" id="maxTemp">--</span>
+            </p>
+            <p class="text-sm md:text-lg">
+              <span class="md:hidden">AVG </span
+              ><span class="hidden md:inline-flex">AVERAGE </span> TEMP
+              <span class="font-semibold font-serif" id="avgTemp">--</span>
+            </p>
+          </div>
+          <!-- info data section end -->
+        </div>
+        <!-- data tabs -->
+        <div class="flex-1 grid grid-cols-3 gap-1 p-1 md:gap-3 md:p-3">
+          <!-- sun rise data tab -->
+          <div
+            class="shadow-md flex flex-col justify-center items-center bg-glass rounded-md"
+          >
+            <p class="text-sm md:text-2xl font-semibold text-center">SUNRISE</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="md:size-[2rem] my-2"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-sunrise"
+            >
+              <path d="M12 2v8" />
+              <path d="m4.93 10.93 1.41 1.41" />
+              <path d="M2 18h2" />
+              <path d="M20 18h2" />
+              <path d="m19.07 10.93-1.41 1.41" />
+              <path d="M22 22H2" />
+              <path d="m8 6 4-4 4 4" />
+              <path d="M16 18a4 4 0 0 0-8 0" />
+            </svg>
+            <p class="text-xs md:text-2xl font-bold font-serif" id="sunrise">
+              --
+            </p>
+          </div>
+          <!-- sun rise data tab end -->
+          <!-- sunset start -->
+          <div
+            class="shadow-md flex flex-col justify-center items-center bg-glass rounded-md"
+          >
+            <p class="text-sm md:text-2xl font-semibold text-center">SUNSET</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="md:size-[2rem] my-2"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-sunset"
+            >
+              <path d="M12 10V2" />
+              <path d="m4.93 10.93 1.41 1.41" />
+              <path d="M2 18h2" />
+              <path d="M20 18h2" />
+              <path d="m19.07 10.93-1.41 1.41" />
+              <path d="M22 22H2" />
+              <path d="m16 6-4 4-4-4" />
+              <path d="M16 18a4 4 0 0 0-8 0" />
+            </svg>
+            <p class="text-xs md:text-2xl font-bold font-serif" id="sunset">
+              --
+            </p>
+          </div>
+          <!-- sunset end -->
+          <!-- humidity start -->
+          <div
+            class="shadow-md flex flex-col justify-center items-center bg-glass rounded-md"
+          >
+            <p class="text-sm md:text-2xl font-semibold text-center">
+              HUMIDITY
+            </p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="md:size-[2rem] my-2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-waves"
+            >
+              <path
+                d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"
+              />
+              <path
+                d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"
+              />
+              <path
+                d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"
+              />
+            </svg>
+            <p class="text-xs md:text-2xl font-bold font-serif" id="humidity">
+              --
+            </p>
+          </div>
+          <!-- humidity end -->
+          <!-- wind speed -->
+          <div
+            class="shadow-md flex flex-col justify-center items-center bg-glass rounded-md"
+          >
+            <p class="text-sm md:text-2xl font-semibold text-center">
+              WINDSPEED
+            </p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              class="md:size-[2rem] my-2"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-wind"
+            >
+              <path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2" />
+              <path d="M9.6 4.6A2 2 0 1 1 11 8H2" />
+              <path d="M12.6 19.4A2 2 0 1 0 14 16H2" />
+            </svg>
+            <p class="text-xs md:text-2xl font-bold font-serif" id="wind">--</p>
+          </div>
+          <!-- wind speed end -->
+          <!-- description -->
+          <div
+            class="shadow-md flex flex-col justify-center items-center bg-glass rounded-md"
+          >
+            <p class="text-[0.8rem] md:text-lg font-semibold text-center">
+              PLACE
+            </p>
+
+            <p
+              class="text-[0.5rem] md:text-lg font-bold font-serif capitalize"
+              id="placeDesc"
+            >
+              --
+            </p>
+            <p class="text-[0.8rem] md:text-lg font-semibold text-center mt-3">
+              DESCRIPTION
+            </p>
+
+            <p
+              class="text-[0.5rem] md:text-lg font-bold font-serif capitalize"
+              id="desc"
+            >
+              --
+            </p>
+          </div>
+          <!-- description end-->
+          <!-- visibility -->
+          <div
+            class="shadow-md flex flex-col justify-center items-center bg-glass rounded-md"
+          >
+            <p class="text-sm md:text-2xl font-semibold text-center">
+              VISIBILITY
+            </p>
+
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              class="md:size-[2rem] my-2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-telescope"
+            >
+              <path
+                d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44"
+              />
+              <path d="m13.56 11.747 4.332-.924" />
+              <path d="m16 21-3.105-6.21" />
+              <path
+                d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z"
+              />
+              <path d="m6.158 8.633 1.114 4.456" />
+              <path d="m8 21 3.105-6.21" />
+              <circle cx="12" cy="13" r="2" />
+            </svg>
+            <p class="text-xs md:text-2xl font-bold font-serif" id="visibility">
+              --
+            </p>
+          </div>
+          <!-- visibility end-->
+          <!--  -->
+        </div>
+        <!-- data tabs ends-->
+      </div>
+      <!-- main content end -->
+      <div class="toast hidden" id="toast">
+        <div class="alert alert-info">
+          <span id="toastMessage"></span>
+        </div>
+      </div>
+    </div>
+    <script src="./src/main.js" type="module"></script>
+  </body>
+</html>
